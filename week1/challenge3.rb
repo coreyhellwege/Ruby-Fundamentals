@@ -1,0 +1,88 @@
+# Retrieving Values
+
+mcenroe = {
+    name: 'John McEnroe',
+    total_majors: 7,
+    slam_breakdown: {
+        aus_open: [],
+        roland_garros: [],
+        wimbledon: [1981, 1983, 1984],
+        us_open: [1979, 1980, 1981, 1984]
+    }
+}
+
+federer = {
+    name: 'Roger Federer',
+    total_majors: 20,
+    slam_breakdown: {
+        aus_open: [2004, 2006, 2007, 2010, 2017, 2018],
+        roland_garros: [2009],
+        wimbledon: [2003, 2004, 2005, 2006, 2007, 2009, 2012, 2017],
+        us_open: [2004, 2005, 2006, 2007, 2008]
+    }
+}
+
+sport = {
+    name: 'Tennis',
+    number_of_players: [
+        {
+            type: 'singles',
+            players: 2
+        },
+        {
+            type: 'doubles',
+            players: 4
+        }
+    ],
+    key_players: [
+        {
+            type: 'female',
+            players: [
+                {
+                    name: 'Steffi Graf',
+                    total_majors: 22,
+                    slam_breakdown: {
+                        aus_open: [1988, 1989, 1990, 1994],
+                        roland_garros: [1987, 1988, 1993, 1995, 1996, 1999],
+                        wimbledon: [1988, 1989, 1991, 1992, 1993, 1995, 1996],
+                        us_open: [1988, 1989, 1993, 1995, 1996]
+                    }
+                },
+                {
+                    name: 'Monica Seles',
+                    total_majors: 9,
+                    slam_breakdown: {
+                        aus_open: [1991, 1992, 1993, 1996],
+                        roland_garros: [1990, 1991, 1992],
+                        wimbledon: [],
+                        us_open: [1991, 1992]
+                    }
+                }
+            ]
+        },
+        {
+            type: 'male',
+            players: [
+                mcenroe,
+                federer
+            ]
+        }
+    ]
+}
+
+# a) Retrieve the string 'doubles'
+puts sport[:number_of_players][1][:type]
+
+# b) Retrieve the number 20
+puts federer[:total_majors]
+
+# c) Retrieve two ways of finding the number 1991
+puts sport[:key_players][0][:players][1][:slam_breakdown][:aus_open][0]
+
+# d) Retrieve an example of how you would find the number of Wimbledon titles 
+# that Monica Seles won from the following structure, starting at sport. 
+# (I kept the years as numbers because you might use them to find the number of 
+# years between the first and last slams, but they could be represented as strings too.)
+p sport[:key_players][0][:players][1][:slam_breakdown][:wimbledon]
+
+
